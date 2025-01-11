@@ -1,3 +1,5 @@
+# Интерполяция методом Жордана-Гаусса
+
 def jordan_gauss(mx):
 
     mx_rows = len(mx)
@@ -21,13 +23,20 @@ def jordan_gauss(mx):
         for i in range(mx_rows):
             if i != k: mx[i][k] = 0
 
-        for j in range(mx_cols - 1, k, -1):
+        for j in range(mx_cols - 1, k - 1, -1):
             mx[k][j] = mx[k][j] / mx[k][k]
 
-matrixx = [[1, -1, 1, 1],
+def print_mx(mx):
+    for i in range(len(mx)):
+        print(mx[i])
+
+matrix = [[1, -1, 1, 1],
           [1, 1, 1, -3],
           [1, 2, 4, -2]]
 
-print(matrixx)
-jordan_gauss(matrixx)
-print(matrixx)
+print("Исходная матрица: ")
+print_mx(matrix)
+
+print("Обработанная матрица: ")
+jordan_gauss(matrix)
+print_mx(matrix)
