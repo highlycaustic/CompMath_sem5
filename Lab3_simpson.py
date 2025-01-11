@@ -1,3 +1,4 @@
+# Расчет интеграла методом Симпсона
 from math import cos
 
 def func(x):
