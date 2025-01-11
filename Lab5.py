@@ -1,3 +1,4 @@
+# Одномерная оптимизация
 def func(x):
     return (3 * x ** 2 + 5) / (x ** 2 + 2) # Исходная функция
 
@@ -32,17 +33,19 @@ def swann(x0, delta):
 
 def dichotomy(a, b, delta):
     print("Расчет по методу дихотомии...")
-    
-    while ((abs(b) - abs(a)) / 2) > 0.001 and deriv(abs(a) - abs(b) / 2) > 0.01:
-        checker = (abs(b) - abs(a)) / 2
-        checker2 = 1
+
+    while abs(deriv((abs(b) - abs(a)) / 2)) > 0.001:
+
         x = (a + b - delta)/2
         y = (a + b + delta)/2
+
         print("i x: %8.5f, y: %8.5f,  L: %8.5f" % (x, y, abs(b - a)))
+
         if func(x) < func(y):
             b = y
         else:
             a = x
+
     print("[%8.5f; %8.5f] = %8.5f" % (a, b, (a + b) / 2))
 
 dichotomy(*swann(-5, 0.1), delta=0.1)
